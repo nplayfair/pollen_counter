@@ -1,4 +1,5 @@
 document.getElementById('pollen').addEventListener('click', getCount);
+document.getElementById('postcodeFind').addEventListener('click', getPostcode);
 
 //Get today's date
 var today = new Date().toISOString().substr(0,10);
@@ -40,6 +41,29 @@ function getCount(e) {
           document.getElementById('levelText').classList.add("w3-animate");
         }
       })
+    })
+    .catch((err) => console.log(err))
+}
+
+function getPostcode(e) {
+    //Stop form submitting
+    e.preventDefault();
+
+    //Get lat/long
+    let pcode = 'https://api.postcodes.io/postcodes/' +
+    document.getElementById('postcode').value;
+
+    //Fetch from API
+    fetch(pcode, {
+      method: "GET",
+    })
+    .then((res) => res.json())
+    .then((data) => {
+      //console.log(data.result.postcode);
+      let lat = data.result.latitude,
+          lon = data.result.longitude;
+      console.log(lat+','+lon);
+
     })
     .catch((err) => console.log(err))
 }
