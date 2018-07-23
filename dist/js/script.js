@@ -35,7 +35,9 @@ function getCount(e) {
           //This is todays reading
           console.log("todays reading found");
           console.log(reading.pollen_count);
+          // Show on page
           document.getElementById('levelText').innerHTML = reading.pollen_count;
+          document.getElementById('levelText').classList.add("w3-animate");
         }
       })
     })
