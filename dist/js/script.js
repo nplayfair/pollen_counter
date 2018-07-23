@@ -1,4 +1,4 @@
-document.getElementById('pollen').addEventListener('click', getCount);
+// document.getElementById('pollen').addEventListener('click', getCount);
 document.getElementById('postcodeFind').addEventListener('click', getPostcode);
 
 //Get today's date
@@ -9,38 +9,6 @@ if ( !String.prototype.contains ) {
     String.prototype.contains = function() {
         return String.prototype.indexOf.apply( this, arguments ) !== -1;
     };
-}
-
-
-function getCount(e) {
-    //Stop form submitting
-    e.preventDefault();
-
-    //Get lat/long
-    let loc = 'https://cors-anywhere.herokuapp.com/' +
-    'https://socialpollencount.co.uk/api/forecast?location=[' +
-    document.getElementById('location').value + ']';
-
-    //Fetch from API
-    fetch(loc, {
-      method: "GET",
-    })
-    .then((res) => res.json())
-    .then((data) => {
-      console.log(data);
-      let currentLevel = 'Unknown';
-      data.forecast.forEach(function(reading) {
-        if(reading.date.contains(today)) {
-          //This is todays reading
-          console.log("todays reading found");
-          console.log(reading.pollen_count);
-          // Show on page
-          document.getElementById('levelText').innerHTML = reading.pollen_count;
-          document.getElementById('levelText').classList.add("w3-animate");
-        }
-      })
-    })
-    .catch((err) => console.log(err))
 }
 
 function getPostcode(e) {
@@ -57,14 +25,11 @@ function getPostcode(e) {
     })
     .then((res) => res.json())
     .then((data) => {
-      //console.log(data.result.postcode);
-      //document.getElementById('foundPostcode').innerHTML = data.result.nuts;
       document.getElementById('foundLocation').innerHTML = "Today's level for " +data.result.nuts+ ":";
       let lat = data.result.latitude,
           lon = data.result.longitude;
       let latlonStr = data.result.latitude+','+data.result.longitude;
-      document.getElementById('location').value = latlonStr;
-      console.log(lat+','+lon);
+      console.log(latlonStr);
       grabCount(latlonStr);
     })
     .catch((err) => {
@@ -89,9 +54,8 @@ function grabCount(latlon) {
         //This is todays reading
         console.log("todays reading found");
         console.log(reading.pollen_count);
-        // Show on page
+        // Show count on page
         document.getElementById('levelText').innerHTML = reading.pollen_count;
-        document.getElementById('levelText').classList.add("w3-animate");
       }
     })
   })
