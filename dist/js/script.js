@@ -38,7 +38,6 @@ function getCount(e) {
           document.getElementById('levelText').innerHTML = reading.pollen_count;
         }
       })
-
     })
     .catch((err) => console.log(err))
 }

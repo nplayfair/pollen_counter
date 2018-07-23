@@ -18,9 +18,9 @@ $desktop: $medium;
 
 /* Colors */
 
-$background: white; 
+$background: white;
 $primary-color: #0366EE;
-$secondary-color: #29de7d; 
+$secondary-color: #29de7d;
 $accent-color: #cdcdcd;
 $alternate-background: #fafafa;
 $alternate-color: #404040;
@@ -29,6 +29,9 @@ $link-hover-color: darken($link-color, 15%);
 $highlight: #ffeea8;
 $error: #D33C40;
 $bq-border: 16px solid #f0f0f0;
+// Weather Colours
+$sky-color: #87cefa;
+$panel-color: #fffafa;
 
 /* Typography */
 
@@ -104,8 +107,8 @@ $muted-background-hover: transparent;
 $muted-color: darken($accent-color, 50%);
 $muted-color-hover: darken($accent-color, 50%);
 
-// Round Buttons   
-$round-buttons: 40px; 
+// Round Buttons
+$round-buttons: 40px;
 
 /* Forms */
 
