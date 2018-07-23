@@ -12,8 +12,6 @@ if ( !String.prototype.contains ) {
 }
 
 
-
-
 function getCount(e) {
     //Stop form submitting
     e.preventDefault();
@@ -60,10 +58,42 @@ function getPostcode(e) {
     .then((res) => res.json())
     .then((data) => {
       //console.log(data.result.postcode);
+      //document.getElementById('foundPostcode').innerHTML = data.result.nuts;
+      document.getElementById('foundLocation').innerHTML = "Today's level for " +data.result.nuts+ ":";
       let lat = data.result.latitude,
           lon = data.result.longitude;
+      let latlonStr = data.result.latitude+','+data.result.longitude;
+      document.getElementById('location').value = latlonStr;
       console.log(lat+','+lon);
+      grabCount(latlonStr);
+    })
+    .catch((err) => {
 
     })
-    .catch((err) => console.log(err))
+}
+
+function grabCount(latlon) {
+  let queryString = 'https://cors-anywhere.herokuapp.com/https://socialpollencount.co.uk/api/forecast?location=[' +
+    latlon + ']';
+  console.log(queryString);
+
+  fetch(queryString, {
+    method: "GET",
+  })
+  .then((res) => res.json())
+  .then((data) => {
+    console.log(data);
+    let currentLevel = 'Unknown';
+    data.forecast.forEach(function(reading) {
+      if(reading.date.contains(today)) {
+        //This is todays reading
+        console.log("todays reading found");
+        console.log(reading.pollen_count);
+        // Show on page
+        document.getElementById('levelText').innerHTML = reading.pollen_count;
+        document.getElementById('levelText').classList.add("w3-animate");
+      }
+    })
+  })
+  .catch((err) => console.log(err))
 }

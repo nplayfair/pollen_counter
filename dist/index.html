@@ -16,16 +16,17 @@
 <div class="xsmall-container text-center pollen-box">
   <h1>Pollen Count</h1>
   <form>
-    <input type="text" id="location" value="51.7546407,-1.2510746">
-    <input id="pollen" class="round-button" type="submit" value="Submit">
-  </form>
-  <form>
     <input type="text" id="postcode" placeholder="Postcode">
     <input id="postcodeFind" class="round-button" type="submit" value="find posty">
   </form>
-  <h3>postcode</h3>
+  <form>
+    <input type="text" id="location" value="51.7546407,-1.2510746">
+    <input id="pollen" class="round-button" type="submit" value="Submit">
+  </form>
+
+  <h3 id="foundPostcode">postcode</h3>
   <section id="results">
-    <h4>Today's Level:</h4>
+    <h4 id="foundLocation">Today's Level</h4>
     <h3 id="levelText">&nbsp;</h3>
   </section>
 </div>
