@@ -56,6 +56,7 @@ function grabCount(latlon) {
         console.log(reading.pollen_count);
         // Show count on page
         document.getElementById('levelText').innerHTML = reading.pollen_count;
+        document.getElementById('levelText').classList.add('fadeInUp');
       }
     })
   })

@@ -7,14 +7,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <title>Pollen Counter</title>
-    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/animate.css@3.5.2/animate.min.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="icon" href="images/favicon.png">
 </head>
 
 <body>
 <div class="xsmall-container text-center pollen-box">
-  <h1>Pollen Count</h1>
+  <header><h1>Pollen Count</h1></header>
   <form>
     <input type="text" id="postcode" placeholder="Please Enter a UK Postcode">
     <input id="postcodeFind" class="round-button" type="submit" value="Search">
@@ -22,7 +23,7 @@
 
   <section id="results">
     <h4 id="foundLocation">Today's Pollen Level</h4>
-    <h3 id="levelText">&nbsp;</h3>
+    <h2 id="levelText" class="animated">&nbsp;</h2>
   </section>
 </div>
 
