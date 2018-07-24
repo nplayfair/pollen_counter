@@ -1,4 +1,4 @@
-// document.getElementById('pollen').addEventListener('click', getCount);
+// document.getElementById('validatePostcode').addEventListener('click', validatePostcode);
 document.getElementById('postcodeFind').addEventListener('click', getPostcode);
 
 //Get today's date
@@ -11,18 +11,50 @@ if ( !String.prototype.contains ) {
     };
 }
 
+// function validatePostcode() {
+//   let pcode = document.getElementById('postcode').value;
+//   console.log('checking: '+pcode);
+//   let validationString = 'https://api.postcodes.io/postcodes/'+pcode+'/validate';
+//   fetch(validationString)
+//   .then((res) => res.json())
+//   .then((data) => {
+//     if (data.result == true) {
+//       console.log(data.result);
+//       return true;
+//     }
+//     // else {
+//     //   // document.getElementById('postcode').classList.add('has-error');
+//     //   // document.getElementById('postcode').value = "Please enter a valid postcode";
+//     //   return false;
+//     // }
+//   })
+// }
+
 function getPostcode(e) {
     //Stop form submitting
     e.preventDefault();
+    let postcode = document.getElementById('postcode').value;
+
+    //Validate postcode
+    // document.getElementById('postcode').classList.remove('has-error');
+    let validationString = 'https://api.postcodes.io/postcodes/'+postcode+'/validate';
+    fetch(validationString)
+    .then((res) => res.json())
+    .then((data) => {
+      if (data.result == true) {
+        console.log(data.result);
+      }
+      else {
+        console.log('invalid postcode');
+        return false;
+      }
+    })
 
     //Get lat/long
-    let pcode = 'https://api.postcodes.io/postcodes/' +
-    document.getElementById('postcode').value;
+    let pcode = 'https://api.postcodes.io/postcodes/' + postcode;
 
     //Fetch from API
-    fetch(pcode, {
-      method: "GET",
-    })
+    fetch(pcode)
     .then((res) => res.json())
     .then((data) => {
       document.getElementById('foundLocation').innerHTML = "Today's level for " +data.result.nuts+ ":";
@@ -33,7 +65,7 @@ function getPostcode(e) {
       grabCount(latlonStr);
     })
     .catch((err) => {
-
+      console.log(err);
     })
 }
 
