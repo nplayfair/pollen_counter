@@ -1,33 +1,31 @@
 {
-  "name": "primitive",
-  "author": "Tania Rascia, Nick Playfair",
-  "version": "1.3.0",
-  "description": "A Sass boilerplate for front end web developers.",
+  "name": "pollen_counter",
+  "author": " Nick Playfair",
+  "version": "1.0.0",
+  "description": "A web app for displaying pollen count in the UK",
   "main": "index.js",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/nplayfair/primitive.git"
+    "url": "git+https://github.com/nplayfair/pollen_counter.git"
   },
   "keywords": [
-    "sass",
-    "setup",
-    "boilerplate",
-    "framework",
-    "ui",
-    "css framework"
+    "weather",
+    "pollen",
+    "uk"
   ],
   "dependencies": {
     "node-sass": "*"
   },
   "scripts": {
     "sass-docs": "node-sass -w -r ./src/scss/ -o ./docs/css/",
-    "sass": "node-sass ./src/scss/ -o ./dist/css/  -w -r --source-map-embed --source-map-contents"
+    "sass": "node-sass ./src/scss/ -o ./dist/css/  -w -r --source-map-embed --source-map-contents",
+    "build": "webpack --progress -p"
   },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/nplayfair/primitive/issues"
+    "url": "https://github.com/nplayfair/pollen_counter/issues"
   },
-  "homepage": "https://taniarascia.github.io/primitive",
+  "homepage": "https://nplayfair.github.io/pollen_counter",
   "private": true,
   "devDependencies": {
     "webpack": "^4.16.2",
