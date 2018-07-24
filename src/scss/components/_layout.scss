@@ -7,6 +7,15 @@ header h1 {
 
 .pollen-box {
   background-color: $panel-color;
-  border: 1px solid orange;
+  box-shadow: 0 8px 6px -6px black;
+  border: 1px solid #ccc;
   margin-top: 2rem;
+}
+
+.location-inputs {
+  justify-content: center;
+}
+
+#postcode {
+  max-width: 50%;
 }
