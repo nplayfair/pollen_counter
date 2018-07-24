@@ -18,7 +18,7 @@ $desktop: $medium;
 
 /* Colors */
 
-$background: white;
+$background: #2980b9;
 $primary-color: #0366EE;
 $secondary-color: #29de7d;
 $accent-color: #cdcdcd;
@@ -32,6 +32,7 @@ $bq-border: 16px solid #f0f0f0;
 // Weather Colours
 $sky-color: #87cefa;
 $panel-color: #fffafa;
+$bg-gradient: linear-gradient(to right, #2980b9, #6dd5fa, #ffffff);
 
 /* Typography */
 
