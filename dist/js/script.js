@@ -1,5 +1,5 @@
 // document.getElementById('validatePostcode').addEventListener('click', validatePostcode);
-document.getElementById('postcodeFind').addEventListener('click', getPostcode);
+document.getElementById('postcodeFind').addEventListener('click', validatePostcode);
 
 //Get today's date
 var today = new Date().toISOString().substr(0,10);
@@ -11,47 +11,35 @@ if ( !String.prototype.contains ) {
     };
 }
 
-// function validatePostcode() {
-//   let pcode = document.getElementById('postcode').value;
-//   console.log('checking: '+pcode);
-//   let validationString = 'https://api.postcodes.io/postcodes/'+pcode+'/validate';
-//   fetch(validationString)
-//   .then((res) => res.json())
-//   .then((data) => {
-//     if (data.result == true) {
-//       console.log(data.result);
-//       return true;
-//     }
-//     // else {
-//     //   // document.getElementById('postcode').classList.add('has-error');
-//     //   // document.getElementById('postcode').value = "Please enter a valid postcode";
-//     //   return false;
-//     // }
-//   })
-// }
+function validatePostcode(e) {
+  //Stop form submitting
+  e.preventDefault();
 
-function getPostcode(e) {
-    //Stop form submitting
-    e.preventDefault();
-    let postcode = document.getElementById('postcode').value;
+  let postcode = document.getElementById('postcode').value;
+  // document.getElementById('postcode').classList.remove('has-error');
+  let validationString = 'https://api.postcodes.io/postcodes/'+postcode+'/validate';
+  fetch(validationString)
+  .then((res) => res.json())
+  .then((data) => {
+    if (data.result == true) {
+      console.log(data.result);
+      getPostcode(postcode);
+    }
+    else {
+      console.log(data.result);
+      console.log('invalid postcode');
+      return;
+    }
+  })
+  .catch((err) => {
+    console.log('error: ' + err);
+  })
+}
 
-    //Validate postcode
-    // document.getElementById('postcode').classList.remove('has-error');
-    let validationString = 'https://api.postcodes.io/postcodes/'+postcode+'/validate';
-    fetch(validationString)
-    .then((res) => res.json())
-    .then((data) => {
-      if (data.result == true) {
-        console.log(data.result);
-      }
-      else {
-        console.log('invalid postcode');
-        return false;
-      }
-    })
+function getPostcode(p) {
 
     //Get lat/long
-    let pcode = 'https://api.postcodes.io/postcodes/' + postcode;
+    let pcode = 'https://api.postcodes.io/postcodes/' + p;
 
     //Fetch from API
     fetch(pcode)
