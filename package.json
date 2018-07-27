@@ -14,19 +14,21 @@
     "uk"
   ],
   "dependencies": {
+    "animate.css": "^3.6.1",
     "node-sass": "*"
   },
   "scripts": {
     "sass-docs": "node-sass -w -r ./src/scss/ -o ./docs/css/",
     "sass": "node-sass ./src/scss/ -o ./dist/css/  -w -r --source-map-embed --source-map-contents",
     "build-css": "node-sass ./src/scss -o ./dist/css/ -r --source-map-embed --source-map-contents",
-    "build": "webpack --progress -p"
+    "build": "npm run build-css && npm run animate && webpack --progress -p",
+    "animate": "cp ./node_modules/animate.css/animate.min.css ./dist/css"
   },
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/nplayfair/pollen_counter/issues"
   },
-  "homepage": "https://nplayfair.github.io/pollen_counter",
+  "homepage": "https://nickplayfair.co.uk/pollen_count",
   "private": true,
   "devDependencies": {
     "webpack": "^4.16.2",
