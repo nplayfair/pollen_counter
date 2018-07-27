@@ -1,7 +1,7 @@
 {
   "name": "pollen_counter",
   "author": " Nick Playfair",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "A web app for displaying pollen count in the UK",
   "main": "index.js",
   "repository": {
