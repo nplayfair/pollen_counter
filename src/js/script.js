@@ -1,4 +1,3 @@
-// document.getElementById('validatePostcode').addEventListener('click', validatePostcode);
 document.getElementById('postcodeFind').addEventListener('click', validatePostcode);
 
 //Get today's date

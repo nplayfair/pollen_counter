@@ -18,11 +18,10 @@
     "node-sass": "*"
   },
   "scripts": {
-    "sass-docs": "node-sass -w -r ./src/scss/ -o ./docs/css/",
     "sass": "node-sass ./src/scss/ -o ./dist/css/  -w -r --source-map-embed --source-map-contents",
     "build-css": "node-sass ./src/scss -o ./dist/css/ -r --source-map-embed --source-map-contents",
-    "build": "npm run build-css && npm run animate && webpack --progress -p",
-    "animate": "cp ./node_modules/animate.css/animate.min.css ./dist/css"
+    "animate": "cp ./node_modules/animate.css/animate.min.css ./dist/css",
+    "build": "npm run build-css && npm run animate && webpack --progress -p"
   },
   "license": "MIT",
   "bugs": {
