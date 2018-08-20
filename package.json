@@ -21,7 +21,8 @@
     "sass": "node-sass ./src/scss/ -o ./dist/css/  -w -r --source-map-embed --source-map-contents",
     "build-css": "node-sass ./src/scss -o ./dist/css/ -r --source-map-embed --source-map-contents",
     "animate": "cp ./node_modules/animate.css/animate.min.css ./dist/css",
-    "build": "npm run build-css && npm run animate && webpack --progress -p"
+    "build": "npm run build-css && npm run animate && webpack --progress -p",
+    "deploy": "gh-pages -d dist"
   },
   "license": "MIT",
   "bugs": {
@@ -30,6 +31,7 @@
   "homepage": "https://nickplayfair.co.uk/pollen_count",
   "private": true,
   "devDependencies": {
+    "gh-pages": "^1.2.0",
     "webpack": "^4.16.2",
     "webpack-cli": "^3.1.0"
   }
